@@ -1,3 +1,7 @@
+<img src="not-ai.png" style="height: 42px">
+
+This project was fully written by a Human. That is, this project conforms to the ["Not by AI 90% rule"](https://notbyai.fyi/).
+
 # Introduction
 
 labwhere-rust-serverless is a Rust project that implements an AWS Lambda function in Rust.
@@ -35,7 +39,7 @@ For generic events, where you define the event data structure, you can create a 
 
 ```json
 {
-    "command": "test"
+  "command": "test"
 }
 ```
 
