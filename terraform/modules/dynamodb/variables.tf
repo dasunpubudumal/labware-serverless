@@ -1,17 +1,17 @@
-variable "table_name" {
-    description = "Name of the DynamoDB table"
-    type = string
-}
-
-variable "partition_key" {
-  description = "Partition key (aka. hash key) of the table"
+variable "billing_mode" {
+  description = "Billing mode"
   type = string
+  default = "PROVISIONED"
 }
 
-variable "attributes" {
-  description = "Attributes for the given table"
-  type = list(object({
-    name = string
-    type = string
-  }))
+variable "read_capacity" {
+  default = 1
+  description = "DynamoDB Read Capacity"
+  type = number
+}
+
+variable "write_capacity" {
+  default = 1
+  description = "DynamoDB Write Capacity"
+  type = number
 }

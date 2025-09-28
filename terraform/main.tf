@@ -7,14 +7,10 @@ data "aws_caller_identity" "current" {}
 
 #  === Defines the resources ===
 module "dynamodb_tables" {
-  source = "./modules/dynamodb"
-
-  table_name    = "location_types"
-  partition_key = "name"
-
-  attributes = [{
-    "name" : "name",
-    "type" : "S"
-  }]
+  source         = "./modules/dynamodb"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 1
+  write_capacity = 1
 }
+
 # === END ===
