@@ -1,0 +1,11 @@
+[package]
+name = "labwhere-rust-serverless"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aws-config = "1.8.6"
+aws-sdk-dynamodb = "1.93.0"
+lambda_http = "0.13.0"
+
+tokio = { version = "1", features = ["macros"] }
