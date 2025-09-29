@@ -25,12 +25,13 @@ pub async fn route(endpoint: &str, request_body: String) -> Result<ApiGatewayPro
                 serde_json::from_str(&request_body).unwrap();
             let name = location_type_request.name;
             println!("Name: {:?}", name);
-            return Ok(create_location_type(&name, DynamoDBImpl { inner: client })
+            // Ignore rust-analyzer warning here.
+            Ok(create_location_type(&name, DynamoDBImpl { inner: client })
                 .await
-                .unwrap());
+                .unwrap())
         }
-        "/locations" => return Ok(ApiGatewayProxyResponse::default()),
+        "/locations" => Ok(ApiGatewayProxyResponse::default()),
         // "/labware " => return Ok(ApiGatewayProxyResponse::default()),
-        _ => return Ok(ApiGatewayProxyResponse::default()),
+        _ => Ok(ApiGatewayProxyResponse::default()),
     }
 }
