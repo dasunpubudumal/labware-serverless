@@ -22,7 +22,7 @@ use mockall::automock;
 #[allow(dead_code)]
 pub struct DynamoDBImpl {
     /// The inner AWS SDK DynamoDB client.
-    inner: Client,
+    pub(crate) inner: Client,
 }
 
 /// Mock implementation for DynamoDB client wrapper.

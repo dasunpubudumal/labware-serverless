@@ -9,6 +9,26 @@ use crate::controller::route;
 pub(crate) async fn handler(
     event: LambdaEvent<ApiGatewayProxyRequest>,
 ) -> Result<ApiGatewayProxyResponse, Error> {
+    let location_types_path = String::from("/location_types");
+    match event.payload.path {
+        Some(path) => {
+            if path == location_types_path {
+                return Ok(route(&location_types_path, event.payload.body.unwrap())
+                    .await
+                    .unwrap());
+            }
+        }
+        None => {
+            return Ok(ApiGatewayProxyResponse {
+                status_code: 400,
+                headers: HeaderMap::new(),
+                body: None,
+                is_base64_encoded: false,
+                multi_value_headers: HeaderMap::new(),
+            })
+        }
+    }
+
     let mut headers = HeaderMap::new();
     headers.insert("content-type", "text/html".parse().unwrap());
     let resp = ApiGatewayProxyResponse {
