@@ -61,6 +61,7 @@ impl DynamoDBImpl {
             .table_name(table.to_string())
             .set_item(Some(item));
         let response = request.send().await?;
+        println!("Response: {:?}", response);
         Ok(response.attributes().unwrap().to_owned())
     }
 }
