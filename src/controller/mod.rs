@@ -1,8 +1,14 @@
 use aws_lambda_events::apigw::ApiGatewayProxyResponse;
 use lambda_runtime::Error;
+use serde::{Deserialize, Serialize};
 use serde_json::json;
 
 use crate::{services::location_types::create_location_type, wrappers::DynamoDBImpl};
+
+#[derive(Serialize, Deserialize)]
+struct LocationTypeRequest {
+    pub name: String,
+}
 
 pub async fn route(endpoint: &str, request_body: String) -> Result<ApiGatewayProxyResponse, Error> {
     let config = aws_config::defaults(aws_config::BehaviorVersion::latest())
@@ -13,9 +19,13 @@ pub async fn route(endpoint: &str, request_body: String) -> Result<ApiGatewayPro
     // TODO: Pass name and client into create_location_type function.
     match endpoint {
         "/location-types" => {
-            let body = json!(&request_body);
-            let name = body.get("name").unwrap().as_str().unwrap();
-            return Ok(create_location_type(name, DynamoDBImpl { inner: client })
+            println!("Routed to location types.");
+            println!("Req Body: {:?}", request_body);
+            let location_type_request: LocationTypeRequest =
+                serde_json::from_str(&request_body).unwrap();
+            let name = location_type_request.name;
+            println!("Name: {:?}", name);
+            return Ok(create_location_type(&name, DynamoDBImpl { inner: client })
                 .await
                 .unwrap());
         }

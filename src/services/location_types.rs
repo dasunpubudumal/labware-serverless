@@ -49,6 +49,8 @@ pub async fn create_location_type(
 
     let mut hashmap: HashMap<String, AttributeValue> = HashMap::new();
     hashmap.insert(String::from("name"), name_av);
+
+    println!("Trying to invoke client..");
     let response = client.put_item("location_types", hashmap).await.unwrap();
 
     let mut headers = HeaderMap::new();

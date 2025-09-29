@@ -9,7 +9,8 @@ use crate::controller::route;
 pub(crate) async fn handler(
     event: LambdaEvent<ApiGatewayProxyRequest>,
 ) -> Result<ApiGatewayProxyResponse, Error> {
-    let location_types_path = String::from("/location_types");
+    let location_types_path = String::from("/location-types");
+    println!("Path: {:?}", event.payload.path);
     match event.payload.path {
         Some(path) => {
             if path == location_types_path {

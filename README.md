@@ -34,6 +34,7 @@ You can use those examples directly with the `--data-example` flag, where the va
 ```bash
 cargo lambda watch
 cargo lambda invoke --data-example apigw-request labwhere-rust-serverless --output-format json
+cargo lambda build --release --output-format zip
 ```
 
 For generic events, where you define the event data structure, you can create a JSON file with the data you want to test with. For example:
