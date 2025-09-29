@@ -32,6 +32,7 @@ You can use the existent [event payloads](https://github.com/awslabs/aws-lambda-
 You can use those examples directly with the `--data-example` flag, where the value is the name of the file in the [lambda-events](https://github.com/awslabs/aws-lambda-rust-runtime/tree/main/lambda-events/src/fixtures) repository without the `example_` prefix and the `.json` extension.
 
 ```bash
+cargo lambda watch
 cargo lambda invoke --data-example apigw-request labwhere-rust-serverless --output-format json
 ```
 

@@ -1298,6 +1298,8 @@ dependencies = [
  "http 1.3.1",
  "lambda_runtime",
  "mockall",
+ "serde",
+ "serde_json",
  "tokio",
 ]
 

@@ -2,3 +2,4 @@ target
 *.tfstate
 .terraform
 *.backup
+*.txt

@@ -1,2 +1,2 @@
-pub mod scan;
-pub mod search;
+pub mod location_types;
+pub mod locations;

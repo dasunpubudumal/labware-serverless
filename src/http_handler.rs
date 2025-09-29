@@ -2,6 +2,8 @@ use aws_lambda_events::apigw::{ApiGatewayProxyRequest, ApiGatewayProxyResponse};
 use http::HeaderMap;
 use lambda_runtime::{Error, LambdaEvent};
 
+use crate::controller::route;
+
 /// REST Docs: https://docs.aws.amazon.com/lambda/latest/dg/rust-http-events.html
 // TODO: Complete this function
 pub(crate) async fn handler(
