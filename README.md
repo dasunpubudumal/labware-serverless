@@ -1,6 +1,6 @@
 <img src="not-ai.png" style="height: 42px">
 
-This project was fully written by a Human. That is, this project conforms to the ["Not by AI 90% rule"](https://notbyai.fyi/).
+This project conforms to the ["Not by AI 90% rule"](https://notbyai.fyi/).
 
 # Introduction
 
